@@ -16,6 +16,7 @@ function onClickAdd(){
 
 }
 task.value=""
+this.saveData()
 }
 
 function add(e){
@@ -26,11 +27,23 @@ function add(e){
 }
 
 list.addEventListener("click",function(e){
-  console.log("hi line 30",e.target)
 if (e.target.tagName==="LI"){
   e.target.classList.toggle("checked")
+  saveData()
 }
 else if(e.target.tagName==="SPAN"){
   e.target.parentElement.remove();
+  saveData()
 } 
 },false)
+
+function saveData(){
+  localStorage.setItem("data",list.innerHTML)
+}
+
+function showData(){
+  list.innerHTML= localStorage.getItem("data")
+}
+
+showData()
+
