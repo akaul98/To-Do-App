@@ -1,5 +1,15 @@
 const task= document.getElementById("input-box")
 const list= document.getElementById("list-container")
+// This is to check whether the browser supports Service worker or not  
+if("serviceWorker" in navigator)
+// Register Returns a promise
+navigator.serviceWorker.register('/service-worker.js').then(
+  ()=>{
+    console.log("Service Workere Registered")
+  }
+) .catch((err) => {
+  console.log(err);
+});
 
 
 function onClickAdd(){
